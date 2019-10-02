@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xaml-comp compile="true" ?>
+
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:SwapiMvvm.Forms.Pages"
+    xmlns:pageModels="clr-namespace:SwapiMvvm.Forms.PageModels"
+    x:Class="SwapiMvvm.Forms.Pages.HomePage"
+    x:TypeArguments="pageModels:HomePageModel">
+    <ContentView>
+        <Grid VerticalOptions="FillAndExpand"
+            BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource HeaderFooterRowHeight}" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="{StaticResource HeaderFooterRowHeight}" />
+            </Grid.RowDefinitions>
+
+            <!--Row 0: Header-->
+            <!--<controls:PageHeader Grid.Row="0" />-->
+
+             <Label Grid.Row="1"
+                 Text="{Binding PageName}"
+                 TextColor="Black"
+                 FontSize="18"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center" />
+
+             <!--Row 2: Footer-->
+            <!--<controls:NavMenuBar Grid.Row="2" />-->
+        </Grid>
+    </ContentView>
+</pages:BasePage>
