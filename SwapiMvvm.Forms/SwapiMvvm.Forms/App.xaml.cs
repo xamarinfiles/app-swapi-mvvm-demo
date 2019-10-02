@@ -1,7 +1,11 @@
 using System;
+using System.Reflection;
 using FancyLogger;
+using SwapiMvvm.Forms.Navigation;
+using SwapiMvvm.Forms.PageModels;
 using SwapiMvvm.Forms.Services;
 using SwapiMvvm.Forms.Services.Messaging;
+using SwapiMvvm.Forms.Services.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +13,11 @@ namespace SwapiMvvm.Forms
 {
     public partial class App : Application
     {
+        #region Fields
+
+        private static readonly Assembly Assembly = typeof(App).Assembly;
+
+        #endregion
 
         #region Constructor
 
@@ -21,6 +30,13 @@ namespace SwapiMvvm.Forms
                 ServiceManager = new ServiceManager();
 
                 MainPage = new MainPage();
+
+                NavService = new NavigationService(Assembly);
+
+                MainPage = new NavigationPage();
+                // TODO Move initiation into NavService method
+                NavService.PushAsync(typeof(HomePageModel),
+                    new NavigationState(NavigationState.AppSection.Home));
             }
             catch (Exception exception)
             {
