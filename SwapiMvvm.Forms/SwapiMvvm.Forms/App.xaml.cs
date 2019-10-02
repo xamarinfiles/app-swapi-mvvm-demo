@@ -1,4 +1,7 @@
-﻿using System;
+using System;
+using FancyLogger;
+using SwapiMvvm.Forms.Services;
+using SwapiMvvm.Forms.Services.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,12 +9,28 @@ namespace SwapiMvvm.Forms
 {
     public partial class App : Application
     {
+
+        #region Constructor
+
         public App()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            MainPage = new MainPage();
+                ServiceManager = new ServiceManager();
+
+                MainPage = new MainPage();
+            }
+            catch (Exception exception)
+            {
+                MessagingService.SendErrorMessage(exception);
+            }
         }
+
+        #endregion
+
+        #region Protected Overrides
 
         protected override void OnStart()
         {
@@ -27,5 +46,29 @@ namespace SwapiMvvm.Forms
         {
             // Handle when your app resumes
         }
+
+        #endregion
+
+        #region Internal Services
+
+        internal static INavigationService NavService { get; private set; }
+
+        private static ServiceManager ServiceManager { get; set; }
+
+        internal static FancyLoggerService LoggingService =>
+            ServiceManager.LoggingService;
+
+        internal static MessagingService MessagingService =>
+            ServiceManager.MessagingService;
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Private
+
+        #endregion
     }
 }
