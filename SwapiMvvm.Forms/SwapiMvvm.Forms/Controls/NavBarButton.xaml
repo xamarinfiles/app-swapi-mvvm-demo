@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xaml-comp compile="true" ?>
+
+<!-- WidthRequest -->
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SwapiMvvm.Forms.Controls.NavBarButton"
+    xmlns:models="clr-namespace:SwapiMvvm.Forms.Models"
+    x:DataType="models:FooterNavItem"
+    x:Name="This"
+    BackgroundColor="{StaticResource UnselectedNavButtonBackground}">
+
+    <Label x:Name="NavItemName"
+        Text="{Binding LabelText}"
+        Style="{StaticResource LightSmallLabelStyle}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer NumberOfTapsRequired="1"
+            Command="{Binding NavigationCommand}"
+            CommandParameter="{Binding AppSection}" />
+    </ContentView.GestureRecognizers>
+</ContentView>

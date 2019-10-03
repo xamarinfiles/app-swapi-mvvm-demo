@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xaml-comp compile="true" ?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SwapiMvvm.Forms.Controls;assembly=SwapiMvvm.Forms"
+    xmlns:pageModels="clr-namespace:SwapiMvvm.Forms.PageModels"
+    x:Class="SwapiMvvm.Forms.Controls.NavBarFooter"
+    x:DataType="pageModels:BasePageModel"
+    BackgroundColor="{StaticResource NavBarBackground}">
+
+    <StackLayout Orientation="Horizontal"
+        BindableLayout.ItemsSource="{Binding FooterNavItems}"
+        Spacing="0">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <controls:NavBarButton HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+</ContentView>
