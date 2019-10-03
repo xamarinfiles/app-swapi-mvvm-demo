@@ -9,7 +9,7 @@ using SwapiMvvm.Forms.PageModels;
 using SwapiMvvm.Forms.Services.Messaging;
 using SwapiMvvm.Forms.Services.Models;
 using Xamarin.Forms;
-using static SwapiMvvm.Forms.Services.Models.NavigationState.AppSection;
+using static SwapiMvvm.Forms.Services.Models.AppSection;
 
 namespace SwapiMvvm.Forms.Navigation
 {
