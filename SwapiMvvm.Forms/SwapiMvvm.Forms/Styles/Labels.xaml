@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- TODO Base label with custom font -->
+
+    <!-- Small -->
+    <Style x:Key="SmallLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Small" />
+    </Style>
+    <Style x:Key="DarkSmallLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource SmallLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}" />
+    </Style>
+    <Style x:Key="LightSmallLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource SmallLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource LightTextColor}" />
+    </Style>
+
+    <!-- Medium -->
+    <Style x:Key="MediumLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Medium" />
+        <!-- TODO Custom font -->
+    </Style>
+    <Style x:Key="DarkMediumLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource MediumLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}" />
+    </Style>
+    <Style x:Key="LightMediumLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource MediumLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource LightTextColor}" />
+    </Style>
+
+    <!-- Large -->
+    <Style x:Key="LargeLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Large" />
+        <!-- TODO Custom font -->
+    </Style>
+    <Style x:Key="DarkLargeLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource LargeLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}" />
+    </Style>
+    <Style x:Key="LightLargeLabelStyle"
+        TargetType="Label"
+        BasedOn="{StaticResource LargeLabelStyle}">
+        <Setter Property="TextColor" Value="{DynamicResource LightTextColor}" />
+    </Style>
+</ResourceDictionary>

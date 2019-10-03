@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"
+    encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- "Star Wars: A New Hope" colors according to Vox -->
+    <Color x:Key="Gondola">#130C0E</Color>
+    <Color x:Key="Tundora">#3e3739</Color>
+    <Color x:Key="Spicy Pink">#76676c</Color>
+    <Color x:Key="Curious Blue">#228cd1</Color>
+    <Color x:Key="Cloudy">#a7a3a2</Color>
+    <Color x:Key="Mischka">#dcdce5</Color>
+
+    <!-- Background colors -->
+    <Color x:Key="NavBarBackground">#3e3739</Color>
+    <Color x:Key="PageBackground">White</Color>
+    <Color x:Key="SelectedNavButtonBackground">#228cd1</Color>
+    <Color x:Key="UnselectedNavButtonBackground">#3e3739</Color>
+
+    <!-- BoxView colors -->
+    <Color x:Key="HardFrameEdge">#FF130C0E</Color>
+    <Color x:Key="ShadowFrameEdge">#8076676c</Color>
+
+    <!-- Text colors -->
+    <Color x:Key="DarkTextColor">#FF130C0E</Color>
+    <Color x:Key="LightTextColor">#FFDCDCE5</Color>
+</ResourceDictionary>

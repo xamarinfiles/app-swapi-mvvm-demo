@@ -2,7 +2,8 @@
 <?xaml-comp compile="true" ?>
 
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SwapiMvvm.Forms.Styles.Dimensions">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Grids -->
     <GridLength x:Key="HeaderFooterRowHeight">60</GridLength>
 </ResourceDictionary>
