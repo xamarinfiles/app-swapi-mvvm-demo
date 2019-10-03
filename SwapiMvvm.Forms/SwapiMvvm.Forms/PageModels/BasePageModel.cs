@@ -1,8 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using FancyLogger;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+using SwapiMvvm.Forms.Models;
 using SwapiMvvm.Forms.Pages;
-using SwapiMvvm.Forms.Services.Messaging;
 using SwapiMvvm.Forms.Services.Models;
+using Xamarin.Forms;
+using static SwapiMvvm.Forms.App;
+using static SwapiMvvm.Forms.Services.Models.NavigationState;
 
 namespace SwapiMvvm.Forms.PageModels
 {
@@ -18,7 +23,9 @@ namespace SwapiMvvm.Forms.PageModels
         {
             NavState = navState;
 
-            App.LoggingService.WriteHeader(PageName);
+            LoggingService.WriteHeader(PageName);
+
+            FooterNavItems = BuildNavigationMenu();
         }
 
         #endregion
@@ -35,7 +42,9 @@ namespace SwapiMvvm.Forms.PageModels
 
         #region Navigation Properties
 
-        public NavigationState NavState { get; }
+        public IList<FooterNavItem> FooterNavItems { get; private set; }
+
+        public NavigationState NavState { get; private set; }
 
         #endregion
 
@@ -63,6 +72,100 @@ namespace SwapiMvvm.Forms.PageModels
 
         #region Navigation Commands
 
+        #region GoToNavBarPageCommand
+
+        public Command<AppSection> GoToAppSectionCommand =>
+            new Command<AppSection>(async appSection =>
+            {
+                try
+                {
+                    switch (appSection)
+                    {
+                        case AppSection.Home:
+                            await ExecuteGoToPageCommand(PageType.Home,
+                                new NavigationState(AppSection.Home));
+                            break;
+                        case AppSection.Films:
+                            await ExecuteGoToPageCommand(PageType.Films,
+                                new NavigationState(AppSection.Films));
+                            break;
+                        case AppSection.People:
+                            await ExecuteGoToPageCommand(PageType.People,
+                                new NavigationState(AppSection.People));
+                            break;
+                        case AppSection.Species:
+                            await ExecuteGoToPageCommand(PageType.Species,
+                                new NavigationState(AppSection.Species));
+                            break;
+                        case AppSection.About:
+                            await ExecuteGoToPageCommand(PageType.About,
+                                new NavigationState(AppSection.About));
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(appSection),
+                                appSection, null);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessagingService.SendErrorMessage(exception);
+                }
+            });
+
+        #endregion
+
+        #region ExecuteGoToPageCommand
+
+        private async Task ExecuteGoToPageCommand(PageType nextPage,
+            NavigationState navState)
+        {
+            var currentPage = PageType;
+
+            // Already on the page => ignore the request
+            if (currentPage == nextPage)
+                return;
+
+            LoggingService.WriteSubheader("Navigation initiated");
+            LoggingService.WriteValue("Current Page", currentPage);
+            LoggingService.WriteValue("Next Page", nextPage);
+
+            try
+            {
+                switch (nextPage)
+                {
+                    case PageType.Home:
+                        await NavService.ReplaceRootAsync(typeof(HomePageModel),
+                            navState);
+                        break;
+                    case PageType.Films:
+                        await NavService.ReplaceRootAsync(typeof(FilmsPageModel),
+                            navState);
+                        break;
+                    case PageType.People:
+                        await NavService.ReplaceRootAsync(typeof(PeoplePageModel),
+                            navState);
+                        break;
+                    case PageType.Species:
+                        await NavService.ReplaceRootAsync(typeof(SpeciesPageModel),
+                            navState);
+                        break;
+                    case PageType.About:
+                        await NavService.ReplaceRootAsync(typeof(AboutPageModel),
+                            navState);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(nextPage), nextPage,
+                            null);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessagingService.SendErrorMessage(exception);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region State Commands
@@ -72,6 +175,32 @@ namespace SwapiMvvm.Forms.PageModels
         #endregion
 
         #region Private
+
+        private IList<FooterNavItem> BuildNavigationMenu()
+        {
+            var footerNavItems = new List<FooterNavItem>();
+
+            AddFooterNavItem(AppSection.Home);
+            AddFooterNavItem(AppSection.Films);
+            AddFooterNavItem(AppSection.People);
+            AddFooterNavItem(AppSection.Species);
+            AddFooterNavItem(AppSection.About);
+
+            return footerNavItems;
+
+            void AddFooterNavItem(AppSection appSection)
+            {
+                var navItem = new FooterNavItem
+                {
+                    AppSection = appSection,
+                    IsSelected = appSection == NavState.AppSectionSelected,
+                    LabelText = appSection.NavItemName(),
+                    NavigationCommand = GoToAppSectionCommand
+                };
+
+                footerNavItems.Add(navItem);
+            }
+        }
 
         #endregion
     }

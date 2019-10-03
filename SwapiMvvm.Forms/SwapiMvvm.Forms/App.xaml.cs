@@ -25,9 +25,9 @@ namespace SwapiMvvm.Forms
         {
             try
             {
-                InitializeComponent();
-
                 ServiceManager = new ServiceManager();
+
+                InitializeComponent();
 
                 MainPage = new MainPage();
 
@@ -36,11 +36,11 @@ namespace SwapiMvvm.Forms
                 MainPage = new NavigationPage();
                 // TODO Move initiation into NavService method
                 NavService.PushAsync(typeof(HomePageModel),
-                    new NavigationState(NavigationState.AppSection.Home));
+                    new NavigationState(AppSection.Home));
             }
             catch (Exception exception)
             {
-                MessagingService.SendErrorMessage(exception);
+                MessagingService?.SendErrorMessage(exception);
             }
         }
 
