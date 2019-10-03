@@ -9,4 +9,8 @@
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SwapiMvvm.Data\SwapiMvvm.Data\SwapiMvvm.Data.csproj" />
+  </ItemGroup>
+
 </Project>
