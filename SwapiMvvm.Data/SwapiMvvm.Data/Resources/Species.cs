@@ -58,6 +58,7 @@ namespace SwapiMvvm.Data.Resources
         public override string ToString() => DebuggerDisplay;
 
         private string DebuggerDisplay =>
-            $"{Name,-30} {Classification,-15} {Language,-20}";
+            //$"{Name,-30} {Classification,-15} {Language,-20}";
+            $"{Name} {Classification} {Language}";
     }
 }

@@ -63,6 +63,7 @@ namespace SwapiMvvm.Data.Resources
         public override string ToString() => DebuggerDisplay;
 
         private string DebuggerDisplay =>
-            $"{Name,-30} {Gender,-15} {Films.Count}";
+            //$"{Name,-30} {Gender,-15} {Films.Count}";
+            $"{Name} {Gender} {Films.Count}";
     }
 }

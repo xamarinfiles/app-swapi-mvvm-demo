@@ -4,6 +4,7 @@ using FancyLogger;
 using SwapiMvvm.Forms.Navigation;
 using SwapiMvvm.Forms.PageModels;
 using SwapiMvvm.Forms.Services;
+using SwapiMvvm.Forms.Services.Api;
 using SwapiMvvm.Forms.Services.Messaging;
 using SwapiMvvm.Forms.Services.Models;
 using Xamarin.Forms;
@@ -76,6 +77,9 @@ namespace SwapiMvvm.Forms
 
         internal static MessagingService MessagingService =>
             ServiceManager.MessagingService;
+
+        internal static SwapiService SwapiService =>
+            ServiceManager.SwapiService;
 
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using SwapiMvvm.Forms.Pages;
 using SwapiMvvm.Forms.Services.Models;
+using Xamarin.Forms;
 
 namespace SwapiMvvm.Forms.PageModels
 {

@@ -1,5 +1,10 @@
-﻿using SwapiMvvm.Forms.Pages;
+﻿using System;
+using System.Collections.ObjectModel;
+using SwapiMvvm.Data.Resources;
+using SwapiMvvm.Forms.Pages;
 using SwapiMvvm.Forms.Services.Models;
+using Xamarin.Forms;
+using static SwapiMvvm.Forms.App;
 
 namespace SwapiMvvm.Forms.PageModels
 {
@@ -13,6 +18,7 @@ namespace SwapiMvvm.Forms.PageModels
 
         public PeoplePageModel(NavigationState navState) : base(navState)
         {
+            LoadPeopleCommand.Execute(null);
         }
 
         #endregion
@@ -24,6 +30,9 @@ namespace SwapiMvvm.Forms.PageModels
         #region Properties
 
         #region Data Properties
+
+        public ObservableCollection<Person> People { get; private set;  } =
+            new ObservableCollection<Person>();
 
         #endregion
 
@@ -42,6 +51,36 @@ namespace SwapiMvvm.Forms.PageModels
         #region Commands
 
         #region Data Commands
+
+        #region LoadPeopleCommand
+
+        public Command LoadPeopleCommand =>
+            new Command(async () =>
+                {
+                    PageIsWaiting = true;
+                    LoadPeopleCommand.ChangeCanExecute();
+
+                    try
+                    {
+                        var people = await SwapiService.GetPeople();
+
+                        if (people?.Results?.Count > 0)
+                        {
+                            People = new ObservableCollection<Person>(people.Results);
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        MessagingService.SendErrorMessage(exception);
+                    }
+
+
+                    PageIsWaiting = false;
+                    LoadPeopleCommand.ChangeCanExecute();
+                },
+                () => !PageIsWaiting);
+
+        #endregion
 
         #endregion
 

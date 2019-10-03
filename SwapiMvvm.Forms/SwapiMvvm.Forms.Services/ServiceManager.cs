@@ -1,5 +1,6 @@
 ﻿using System;
 using FancyLogger;
+using SwapiMvvm.Forms.Services.Api;
 using SwapiMvvm.Forms.Services.Messaging;
 
 namespace SwapiMvvm.Forms.Services
@@ -23,6 +24,8 @@ namespace SwapiMvvm.Forms.Services
                 LoggingService = new FancyLoggerService();
 
                 MessagingService = new MessagingService();
+
+                SwapiService = new SwapiService();
             }
             catch (Exception exception)
             {
@@ -37,6 +40,8 @@ namespace SwapiMvvm.Forms.Services
         public static FancyLoggerService LoggingService { get; private set; }
 
         public static MessagingService MessagingService { get; private set; }
+
+        public static SwapiService SwapiService { get; private set; }
 
         #endregion
 

@@ -7,7 +7,9 @@
     xmlns:controls="clr-namespace:SwapiMvvm.Forms.Controls"
     xmlns:pages="clr-namespace:SwapiMvvm.Forms.Pages"
     xmlns:pageModels="clr-namespace:SwapiMvvm.Forms.PageModels"
+    xmlns:resources="clr-namespace:SwapiMvvm.Data.Resources;assembly=SwapiMvvm.Data"
     x:Class="SwapiMvvm.Forms.Pages.PeoplePage"
+    x:DataType="pageModels:PeoplePageModel"
     x:TypeArguments="pageModels:PeoplePageModel">
     <ContentView>
         <Grid VerticalOptions="FillAndExpand">
@@ -20,12 +22,34 @@
             <!-- Row 0: Header -->
             <controls:PageHeader Grid.Row="0" />
 
-            <!-- TEMP -->
-            <Label Grid.Row="1"
-                Text="{Binding PageName}"
-                Style="{StaticResource DarkMediumLabelStyle}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center" />
+            <ActivityIndicator Grid.Row="1"
+                IsVisible="{Binding PageIsWaiting}" />
+            <StackLayout Grid.Row="1"
+                BindableLayout.ItemsSource="{Binding People}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="resources:Person">
+                        <Frame BorderColor="{StaticResource Mischka}" CornerRadius="5">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="Person" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" />
+                                <Label Grid.Row="1" Grid.Column="0" Text="Gender" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Gender}" />
+                                <Label Grid.Row="2" Grid.Column="0" Text="Film Count" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Films.Count}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
 
             <!-- Row 2: Footer -->
             <controls:NavBarFooter Grid.Row="2" />

@@ -53,6 +53,7 @@ namespace SwapiMvvm.Data.Resources
         public override string ToString() => DebuggerDisplay;
 
         private string DebuggerDisplay =>
-            $"#{Title,-30} {EpisodeId,-15} {ReleaseDate:d}";
+            //$"#{Title,-30} {EpisodeId,-15} {ReleaseDate:d}";
+            $"#{Title} {EpisodeId} {ReleaseDate:d}";
     }
 }

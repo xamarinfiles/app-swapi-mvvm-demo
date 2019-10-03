@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SwapiMvvm.Data\SwapiMvvm.Data\SwapiMvvm.Data.csproj" />
     <ProjectReference Include="..\SwapiMvvm.Forms.Services\SwapiMvvm.Forms.Services.csproj" />
   </ItemGroup>
 </Project>
