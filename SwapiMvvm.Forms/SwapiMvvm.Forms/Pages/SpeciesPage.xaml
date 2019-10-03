@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"
+    encoding="utf-8"?>
 <?xaml-comp compile="true" ?>
 
 <pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
@@ -6,9 +7,8 @@
     xmlns:controls="clr-namespace:SwapiMvvm.Forms.Controls"
     xmlns:pages="clr-namespace:SwapiMvvm.Forms.Pages"
     xmlns:pageModels="clr-namespace:SwapiMvvm.Forms.PageModels"
-    x:Class="SwapiMvvm.Forms.Pages.HomePage"
-    x:DataType="pageModels:HomePageModel"
-    x:TypeArguments="pageModels:HomePageModel">
+    x:Class="SwapiMvvm.Forms.Pages.SpeciesPage"
+    x:TypeArguments="pageModels:SpeciesPageModel">
     <ContentView>
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -17,17 +17,17 @@
                 <RowDefinition Height="{StaticResource HeaderFooterRowHeight}" />
             </Grid.RowDefinitions>
 
-            <!--Row 0: Header-->
+            <!-- Row 0: Header -->
             <controls:PageHeader Grid.Row="0" />
 
             <!-- TEMP -->
             <Label Grid.Row="1"
-                 Text="{Binding PageName}"
-                 Style="{StaticResource DarkMediumLabelStyle}"
-                 HorizontalOptions="Center"
-                 VerticalOptions="Center" />
+                Text="{Binding PageName}"
+                Style="{StaticResource DarkMediumLabelStyle}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
 
-            <!--Row 2: Footer-->
+            <!-- Row 2: Footer -->
             <controls:NavBarFooter Grid.Row="2" />
         </Grid>
     </ContentView>

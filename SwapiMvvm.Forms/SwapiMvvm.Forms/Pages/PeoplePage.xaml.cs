@@ -3,11 +3,11 @@ using SwapiMvvm.Forms.PageModels;
 
 namespace SwapiMvvm.Forms.Pages
 {
-    public partial class HomePage : BasePage<HomePageModel>
+    public partial class PeoplePage : BasePage<PeoplePageModel>
     {
         #region Constructors
 
-        public HomePage()
+        public PeoplePage()
         {
             try
             {

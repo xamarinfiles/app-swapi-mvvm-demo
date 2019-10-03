@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using SwapiMvvm.Forms.Services.Models;
 using static SwapiMvvm.Forms.Resources.Strings;
 
@@ -34,6 +32,5 @@ namespace SwapiMvvm.Forms.Pages
 
             return pageTitle;
         }
-
     }
 }
