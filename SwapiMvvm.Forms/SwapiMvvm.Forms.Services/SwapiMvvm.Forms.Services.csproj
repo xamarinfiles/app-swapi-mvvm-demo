@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="FancyLogger" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
   </ItemGroup>
 
 </Project>
