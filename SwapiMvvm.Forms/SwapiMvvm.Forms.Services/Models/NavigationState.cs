@@ -5,21 +5,6 @@ namespace SwapiMvvm.Forms.Services.Models
 {
     public class NavigationState
     {
-        #region Enums
-
-        public enum AppSection
-        {
-            Splash,
-            Home,
-            Films,
-            People,
-            Species,
-            About,
-            Modal
-        }
-
-        #endregion
-
         #region Constructors
 
         public NavigationState(AppSection appSection)
