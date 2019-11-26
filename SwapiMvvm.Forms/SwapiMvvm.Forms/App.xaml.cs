@@ -30,7 +30,7 @@ namespace SwapiMvvm.Forms
 
                 InitializeComponent();
 
-                MainPage = new MainPage();
+                // MainPage = new MainPage();
 
                 NavService = new NavigationService(Assembly);
 
